@@ -1,0 +1,7 @@
+git init
+
+git config --global user.name "luisxfelipe"
+
+git config --global user.email "luis.felipe-simoes@outlook.com"
+
+git clone https://github.com/luisxfelipe/Faculdade_Impacta_2semestre.git
