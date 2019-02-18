@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulário</title>
+</head>
+<body>
+    <h1>Formulário</h1>
+    <form name="Form1" action="/" method="POST" enctype="application/x-www-form-urlencoded">
+        <fieldset>
+                <legend>Dados Pessoais</legend>
+                <label for="input_nome">Nome:</label>
+                <input name="nome" id="input_nome" type="text" size="80"/>
+                <label for="input_email">Email:</label>
+                <input name="nome" id="input_email" type="email" size="50"/>
+                <br>
+                <label for="input_password">Senha:</label>
+                <input name="password" id="input_password" type="password" size="50"/>
+                <br>
+                Tem filhos:
+                <input name="filhos" id="input_filhos_s" type="radio" size="50"/>
+                <label for="input_filhos_s">Sim</label>
+                <input name="filhos" id="input_filhos_n" type="radio" size="50"/>
+                <label for="input_filhos_n">Não</label>
+                <br>
+                <label for="input_nasc">Data de Nascimento</label>
+                <input name="nascimento" id="input_nasc" type="datetime-local"/>
+        </fieldset>
+        <fieldset>
+            <legend>Dados Profissionais</legend>
+            <label for="input_vinculo">Tipo de Vinculo</label>
+            <select name="vinculo" id="input_vinculo">
+                    <option>Selecione</option>
+                <option>Celetista</option>
+                <option>Profissional Liberal</option>
+            </select>
+        </fieldset>
+        <input type="checkbox" required name="aceito" id="input_aceito">
+        <label for="input_aceito">Aceite os Termos</label>
+        <br>
+        <button>Enviar</button>
+    </form>
+    
+</body>
+</html>
