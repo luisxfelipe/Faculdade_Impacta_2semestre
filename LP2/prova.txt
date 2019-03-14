@@ -1,0 +1,3 @@
+projeção - SELECT
+relação - FROM TABELA
+seleção - WHERE

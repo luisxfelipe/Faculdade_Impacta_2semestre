@@ -1,0 +1,19 @@
+
+C:\>sqllocaldb info
+dbfisico
+dbimpta
+luis
+v11.0
+
+C:\>sqllocaldb start luis
+LocalDB instance "luis" started.
+
+C:\>sqllocaldb info luis
+Name:               luis
+Version:            11.0.2100.60
+Shared name:
+Owner:              SALAS\1801789
+Auto-create:        No
+State:              Running
+Last start time:    08/03/2019 09:03:36
+Instance pipe name: np:\\.\pipe\LOCALDB#C26923A4\tsql\query
