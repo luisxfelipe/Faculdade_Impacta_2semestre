@@ -1,0 +1,15 @@
+main {
+/*	position: absolute;*/
+	top: 15%;
+	left: 0;
+	width: 100%;
+	min-height: calc(100% - 200px);
+	background-color: green;
+}
+
+aside {
+	width: 10%;
+	height: 1000px;
+	background-color: white;
+}
+
