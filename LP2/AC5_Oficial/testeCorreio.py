@@ -29,3 +29,9 @@ m2 = Mensagem('Luis', 'Gustavo', s2 ,'Aula LP2', \
 m3 = Mensagem('Gustavo', 'João',s3 ,'Aula de Python', \
              'João, como assim a aula vai ser maneira vai ser dificil?')
 
+s1.receberMensagem(m1, 1234)
+
+mensagens = s3.getMensagem()
+
+for m in mensagens3:
+    print(m)
