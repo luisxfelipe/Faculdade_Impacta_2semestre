@@ -1,0 +1,4 @@
+def __str__(self):
+        '''
+        return 'Disciplina: ' + self._nome + ', Carga: ' + str(self._carga_horaria)
+        '''
