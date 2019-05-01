@@ -3,7 +3,7 @@ from typing import List
 __alunos__ = ['aluno1@aluno.faculdadeimpacta.com.br',
               'aluno2@aluno.faculdadeimpacta.com.br']
 
-########################################################################
+
 class Pessoa:
     '''
     Abstração de pessoa:
@@ -11,9 +11,18 @@ class Pessoa:
     def __init__(self, nome: str, idade: int):
         self.nome = nome
         self.idade = idade
-########################################################################
+
 
 class Funcionario(Pessoa):
+
+    '''
+    '   Construtor da Classe Funcionario
+    '''
+    def __init__(self, nome: str, idade: int, email: str,
+                 carga_horaria_semanal: int, salario: float):
+        super().__init__(nome, idade)
+        self.carga_horaria_semanal = carga_horaria_semanal
+        self.salario = salario
     
     '''
     Classe Abstrata funcionário.
@@ -22,10 +31,10 @@ class Funcionario(Pessoa):
         '''
         Calcula o salário do Mês para o funcionário
         '''
-        #raise NotImplementedError
-
-        return (self.carga_horaria_semanal * 35) * 4.5
-       
+        if self.__class__.__name__ == 'Programador':
+            return (self.carga_horaria_semanal * self.salario) * 4.5
+        elif self.__class__.__name__ == 'Estagiario':
+            return ((self.carga_horaria_semanal * self.salario) * 4.5) + 250
 
     def altera_carga_horaria(self, nova_carga_horaria: int) -> None:
         '''
@@ -33,20 +42,28 @@ class Funcionario(Pessoa):
         de horas por categoria.
         Caso o numero informado seja inválido, da raise em um ValueError
         '''
-        raise NotImplementedError
+        if self.__class__.__name__ == 'Programador':
+            if nova_carga_horaria >= 20 and nova_carga_horaria <= 40:
+                self.carga_horaria_semanal = nova_carga_horaria
+            else:
+                return ValueError
+        elif self.__class__.__name__ == 'Estagiario':
+            if nova_carga_horaria >= 16 and nova_carga_horaria <= 30:
+                self.carga_horaria_semanal = nova_carga_horaria
+            else:
+                return ValueError
 
     def consulta_carga_horaria(self) -> int:
         '''
         Devolve a carga horária de trabalho do funcionário
         '''
-        raise NotImplementedError
+        return self.carga_horaria_semanal
 
     def aumenta_salario(self) -> None:
         '''
         Da um aumento de 5% no valor da hora trabalhada para o funcionário
         '''
-        raise NotImplementedError
-
+        self.salario += (self.salario / 100) * 5
 
 class Programador(Funcionario):
     '''
@@ -56,11 +73,9 @@ class Programador(Funcionario):
     Para efeito de cálculo de pagamento o mês possui 4,5 semanas
     '''
     def __init__(self, nome: str, idade: int, email: str,
-                 carga_horaria_semanal: int = 40):
-        self.nome = nome
-        self.idade = idade
-        self.email = email
-        self.carga_horaria_semanal = carga_horaria_semanal
+                 carga_horaria_semanal: int = 40, salario: float = 35):
+        super().__init__(nome, idade, email,carga_horaria_semanal,
+                         salario)
         
 
 
@@ -73,11 +88,10 @@ class Estagiario(Funcionario):
     Para efeito de cálculo de salário o mês possui 4,5 semanas
     '''
     def __init__(self, nome: str, idade: int, email: str,
-                 carga_horaria_semanal: int = 20):
-        self.nome = nome
-        self.idade = idade
-        self.email = email
-        self.carga_horaria_semanal = carga_horaria_semanal  
+                 carga_horaria_semanal: int = 20, salario: float = 15.50):
+        super().__init__(nome, idade, email,carga_horaria_semanal,
+                         salario)
+        
 
 
 class Empresa:
@@ -101,15 +115,35 @@ class Empresa:
         '''
         Devolve um lista com todos os funcionarios
         '''
+        return self.equipe
 
     def folha_pagamento(self) -> float:
         '''
         Devolve o montante total gasto com pagamento dos funcionários
         '''
-        pass
+
+        i = 0
+
+        montante = 0
+
+        List = self.equipe
+
+        for i in range(len(List)):
+            a = List[i].calcula_salario()
+            montante = montante + a
+
+        return montante
 
     def dissidio_anual(self) -> None:
         '''
         Aumenta o valor da hora trabalhada em 5% para todos os funcionários
         '''
+        i = 0
+
+        List = self.equipe
+
+        for i in range(len(List)):
+            List[i].aumenta_salario
         
+
+
